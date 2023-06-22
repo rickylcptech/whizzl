@@ -19,19 +19,7 @@
                                 <span class="input-group-text"> <i class="fa fa-user"></i> </span>
                             </div>
                             <input name="name" class="form-control" placeholder="Full name" type="text" required>
-                        </div> 
-                        <select name="community_id" class="form-control mt-2" required>
-                            <option value="">Select Comunity</option>
-                            @foreach($communities as $community)
-                                <option value="{{ $community->id }}">{{ $community->name }}</option>
-                            @endforeach
-                        </select>
-                        <select name="site_id" class="form-control mt-2" required>
-                            <option value="">Select Site</option>
-                            @foreach($sites as $site)
-                                <option value="{{ $site->id }}">{{ $site->name }}</option>
-                            @endforeach
-                        </select>
+                        </div>
                         <input type="file" name="foto" required class="mt-2" accept="image/*">
                         <div class="form-group mt-2">
                             <button type="submit" class="btn btn-primary btn-block"> Create Account </button>

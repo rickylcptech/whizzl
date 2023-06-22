@@ -44,6 +44,7 @@ class StaffController extends Controller
     {
         $staff = new Staff(request()->only(['name', 'site_id', 'community_id']));
         $staff->photo = request()->file('foto')->store('Face', 'public');
+        dd($staff->photo);
         $staff->save();
         return redirect()->back();
     }
