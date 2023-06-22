@@ -32,7 +32,7 @@ class LoginRequest extends FormRequest
             'password' => ['required', function ($attr, $value, $fail) {
                 $people = \App\Models\User::where('email', $this->request->get('email'))->first();
                 if ($people && !(Hash::check($value, $people->password))) {
-                    $fail($attr . ' tidak valid');
+                    $fail($attr . ' not valid');
                 }
             }],
         ];

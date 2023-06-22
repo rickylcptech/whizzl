@@ -10,7 +10,7 @@ class ApiMessage
     public const NOT_FOUND            = 'NOT_FOUND';
     public const FAILED_DEPENDENCY    = 'FAILED_DEPENDENCY';
     public const BAD_REQUEST          = 'BAD_REQUEST';
-    public const SUCCESFULL_UPDATE    = 'DATA BERHASIL DI UPDATE';
-    public const SUCCESFULL_DELETE    = 'DATA BERHASIL DI HAPUS';
-    public const CAN_T_DELETE         = 'Maaf anda tidak dapat menghapus data karena sedang di peroses';
+    public const SUCCESFULL_UPDATE    = 'SUCCESSFUL UPDATE DATA';
+    public const SUCCESFULL_DELETE    = 'SUCCESSFUL DELETE DATA';
+    public const CAN_T_DELETE         = 'Sorry, you cannot delete the data because it is being processed';
 }

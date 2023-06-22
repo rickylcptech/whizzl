@@ -23,4 +23,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => 'v1'], function () {
     Route::apiResource('staff', App\Http\Controllers\Api\StaffController::class);
+    //API route for login user
+    Route::post('/login', [App\Http\Controllers\Api\AuthController::class, 'login']);
+    Route::post('/logout', [App\Http\Controllers\Api\AuthController::class, 'logout']);
+    Route::post('/register', [App\Http\Controllers\Api\AuthController::class, 'register']);
+
 });
