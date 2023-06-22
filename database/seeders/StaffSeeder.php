@@ -6,6 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Staff;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 
 class StaffSeeder extends Seeder
 {
@@ -16,6 +17,9 @@ class StaffSeeder extends Seeder
      */
     public function run()
     {
+      File::deleteDirectory(storage_path('app/public/Face'));
+      File::makeDirectory(storage_path('app/public/Face'));
+      $batasData = 500;
         $dataStaffLive = [
             [
               'id' => '20596',
@@ -701,13 +705,21 @@ class StaffSeeder extends Seeder
 
         DB::table('staffs')->insert($dataStaffLive);
 
+        $faceFiles = scandir(resource_path('faces'));
+        $count = count($dataStaffLive);
         $staffsRandom = [];
-        for ($i = 1; $i <= 2000; $i++) {
-            $faker = \Faker\Factory::create('en_US');
-            $staffsRandom[] = [
-                'name' => $faker->name(),
-                'photo' => $faker->imageUrl(640, 480, 'people', true, 'Faker'),
-            ];
+        foreach ($faceFiles as $face) {
+          if ($face == '.' || $face == '..') continue;
+          copy(resource_path('faces/' . $face), storage_path('app/public/Face/' . $face));
+
+          $faker = \Faker\Factory::create('en_US');
+          $faker->name();
+          $staffsRandom[] = [
+            'name' => explode('.', $face)[0],
+            'photo' => asset('storage/Face/' . $face),
+          ];
+          if ($count >= $batasData) break;
+          $count++;
         }
 
         DB::table('staffs')->insert($staffsRandom);
