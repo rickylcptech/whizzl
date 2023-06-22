@@ -42,9 +42,10 @@ class StaffController extends Controller
      */
     public function store(Request $request)
     {
-        $staff = new Staff(request()->only(['name', 'site_id', 'community_id']));
+        $staff = new Staff(request()->only(['name']));
+        $staff->community_id = 1;
+        $staff->site_id = 1;
         $staff->photo = request()->file('foto')->store('Face', 'public');
-        dd($staff->photo);
         $staff->save();
         return redirect()->back();
     }
