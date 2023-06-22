@@ -700,5 +700,16 @@ class StaffSeeder extends Seeder
         ];
 
         DB::table('staffs')->insert($dataStaffLive);
+
+        $staffsRandom = [];
+        for ($i = 1; $i <= 2000; $i++) {
+            $faker = \Faker\Factory::create('en_US');
+            $staffsRandom[] = [
+                'name' => $faker->name(),
+                'photo' => $faker->imageUrl(640, 480, 'people', true, 'Faker'),
+            ];
+        }
+
+        DB::table('staffs')->insert($staffsRandom);
     }
 }
