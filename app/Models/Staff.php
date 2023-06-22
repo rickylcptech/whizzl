@@ -9,24 +9,5 @@ class Staff extends Model
 {
     use HasFactory;
     protected $table = 'staffs';
-    protected $fillable = ['name', 'site_id', 'community_id', 'photo'];
-    protected $appends = ['url'];
-    
-
-    public function getUrlAttribute()
-    {
-        return url('/') .'/storage'.$this->photo;
-    }
-
-    public function site()
-    {
-        return $this->belongsTo(\App\Models\Site::class, 'site_id');
-    }
-
-    public function community()
-    {
-        return $this->belongsTo(\App\Models\Community::class, 'community_id');
-    }
-
-
+    protected $fillable = ['name', 'photo'];
 }

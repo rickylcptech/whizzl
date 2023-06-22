@@ -15,8 +15,6 @@ return new class () extends Migration {
         Schema::create('staffs', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->bigInteger('site_id');
-            $table->bigInteger('community_id');
             $table->string('photo');
             $table->timestamps();
         });
