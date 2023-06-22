@@ -43,7 +43,7 @@ class StaffController extends Controller
     public function store(Request $request)
     {
         $staff = new Staff(request()->only(['name']));
-        $staff->photo = request()->file('foto')->store('Face', 'public');
+        $staff->photo = url('/storage') . '/' . request()->file('foto')->store('Face', 'public');
         $staff->save();
         return redirect()->back();
     }
