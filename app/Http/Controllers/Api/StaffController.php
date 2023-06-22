@@ -19,7 +19,7 @@ class StaffController extends Controller
         $filterable = ['keyword'];
         $filterableValues = array_filter($request->only($filterable));
 
-        $data = Staff::with('site', 'community')->when(count($filterableValues), function ($query) use ($filterableValues) {
+        $data = Staff::when(count($filterableValues), function ($query) use ($filterableValues) {
             foreach ($filterableValues as $column => $value) {
                 if ($column == 'keyword') {
                     $query->where('name', 'like', '%' . $value . '%');
@@ -27,6 +27,7 @@ class StaffController extends Controller
                 // $query->where($column, 'like', '%' . $value . '%');
             }
         })->paginate(50);
+        
         return $this->respond($data);
     }
 

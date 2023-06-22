@@ -14,8 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return redirect()->route('login');
-// });
+Route::get('/', function () {
+    return "NOTHING TO SEE HERE";
+});
 
 Route::resource('staff', StaffController::class);
