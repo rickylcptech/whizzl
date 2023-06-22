@@ -9,7 +9,9 @@ class Staff extends Model
 {
     use HasFactory;
     protected $table = 'staffs';
+    protected $fillable = ['name', 'site_id', 'community_id', 'photo'];
     protected $appends = ['url'];
+    
 
     public function getUrlAttribute()
     {
